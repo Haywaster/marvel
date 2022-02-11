@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
@@ -82,8 +84,6 @@ const View = (props) => {
         imgStyle = {'objectFit' : 'unset'};
     }
 
-    console.log(comics.length)
-
     return (
         <>
             <div className="char__basics">
@@ -105,7 +105,7 @@ const View = (props) => {
             </div>
             <div className="char__comics">Comics:</div>
             <ul className="char__comics-list">
-                {comics.length > 0 ? null : 'Правду скажи'} 
+                {comics.length > 0 ? null : "There isn't information about this character"} 
                 {
                     comics.splice(0, 10).map((item, i) => {
                         return (
@@ -118,6 +118,10 @@ const View = (props) => {
             </ul>
         </>
     )
+}
+
+CharInfo.propTypes = {
+    charId: PropTypes.number
 }
 
 export default CharInfo;
